@@ -27,9 +27,10 @@ feature "Manage contacts" do
     expect(page).to have_content "mobile 555-7888"
   end
 
-  scenario "edits a contact and displays the updated results" do
+  scenario "edits a contact and displays the updated results", js: true do
     contact = create(:contact, firstname: 'Sam', lastname: 'Smith')
     visit root_path
+    click_link 'Toggle Admin'
     within "#contact_#{contact.id}" do
       click_link 'Edit'
     end
@@ -49,15 +50,13 @@ feature "Manage contacts" do
     expect(page).to have_content '123-555-7777'
   end
 
-  scenario "deletes a contact", js: true do
+  scenario "deletes a contact" do
     contact = create(:contact, firstname: "Aaron", lastname: "Sumner")
     visit root_path
     expect{
       within "#contact_#{contact.id}" do
         click_link 'Destroy'
       end
-      alert = page.driver.browser.switch_to.alert
-      alert.accept
     }.to change(Contact,:count).by(-1)
     expect(page).to have_content "Contacts"
     expect(page).to_not have_content "Aaron Sumner"

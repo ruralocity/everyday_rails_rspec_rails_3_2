@@ -17,7 +17,10 @@
   </ul>
 <% end %>
 
-<% if can? :edit, @contact %>
-  <%= link_to 'Edit', edit_contact_path(@contact) %> |
-<% end %>
-<%= link_to 'Back', contacts_path %>
+<p class="controls">
+  <% if can? :edit, @contact %>
+    <%= link_to 'Edit', edit_contact_path(@contact) %> |
+
+  <% end %>
+  <%= link_to 'Back', contacts_path %>
+</p>

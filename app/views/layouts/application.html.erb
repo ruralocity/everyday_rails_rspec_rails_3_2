@@ -12,6 +12,7 @@
     <% if not current_user %>
       <%= link_to 'Log In', new_session_path %>
     <% else %>
+      <%= link_to 'Toggle Admin', '#', id: 'toggler', onclick: 'return false;' %> |
       <% if can? :manage, User %>
         <%= link_to 'Users', users_path %> |
       <% end %>
