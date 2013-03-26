@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe ContactsController do
-  # before :each do
-  #   @contact = create(:contact, firstname: 'Lawrence', lastname: 'Smith')
-  # end
   let(:admin) { build_stubbed(:admin) }
   let(:user) { build_stubbed(:user) }
 
@@ -31,12 +28,10 @@ describe ContactsController do
       end
 
       it "populates an array of contacts" do
-        # get :index
         expect(assigns(:contacts)).to match_array [contact]
       end
 
       it "renders the :index view" do
-        # get :index
         expect(response).to render_template :index
       end
     end
@@ -48,12 +43,10 @@ describe ContactsController do
       end
 
       it "assigns the requested contact to @contact" do
-        # get :show, id: contact
         expect(assigns(:contact)).to eq contact
       end
 
       it "renders the :show template" do
-        # get :show, id: contact
         expect(response).to render_template :show
       end
     end
@@ -66,12 +59,10 @@ describe ContactsController do
       end
 
       it "assigns a new Contact to @contact" do
-        # get :new
         expect(assigns(:contact)).to be_a_new(Contact)
       end
 
       it "assigns a home, office, and mobile phone to the new contact" do
-        # get :new
         phones = assigns(:contact).phones.map do |p|
           p.phone_type
         end
@@ -79,7 +70,6 @@ describe ContactsController do
       end
 
       it "renders the :new template" do
-        # get :new
         expect(response).to render_template :new
       end
     end
@@ -97,14 +87,6 @@ describe ContactsController do
     end
 
     describe "POST #create" do
-      # before :each do
-      #   @phones = [
-      #     attributes_for(:phone, phone_type: "home"),
-      #     attributes_for(:phone, phone_type: "office"),
-      #     attributes_for(:phone, phone_type: "mobile")
-      #   ]
-      # end
-
       context "with valid attributes" do
         before :each do
           post :create, contact: attributes_for(:contact,
@@ -112,16 +94,10 @@ describe ContactsController do
         end
 
         it "creates a new contact" do
-          # expect{
-          #   post :create, contact: attributes_for(:contact,
-          #     phones_attributes: phones)
-          # }.to change(Contact,:count).by(1)
           expect(Contact.exists?(assigns[:contact])).to be_true
         end
 
         it "redirects to the new contact" do
-          # post :create, contact: attributes_for(:contact,
-          #   phones_attributes: phones)
           expect(response).to redirect_to Contact.last
         end
       end
@@ -132,9 +108,6 @@ describe ContactsController do
         end
 
         it "does not save the new contact" do
-          # expect{
-          #   post :create, contact: attributes_for(:invalid_contact)
-          # }.to_not change(Contact,:count)
           expect(Contact.exists?(contact)).to be_false
         end
 
@@ -145,26 +118,12 @@ describe ContactsController do
     end
 
     describe 'PUT #update' do
-      before :each do
-        # contact.stub(:update_attributes).and_return(true)
-
-      end
-
       context "valid attributes" do
         it "located the requested @contact" do
           contact.should_receive(:update_attributes).with(valid_attributes.stringify_keys).and_return(true)
           put :update, id: contact, contact: valid_attributes
           expect(assigns(:contact)).to eq(contact)
         end
-
-        # it "changes @contact's attributes" do
-        #   put :update, id: contact,
-        #     contact: attributes_for(:contact,
-        #       firstname: "Larry", lastname: "Smith")
-        #   # @contact.reload
-        #   expect(contact.firstname).to eq("Larry")
-        #   expect(contact.lastname).to eq("Smith")
-        # end
 
         it "redirects to the updated contact" do
           put :update, id: contact, contact: attributes_for(:contact)
@@ -180,20 +139,14 @@ describe ContactsController do
         end
 
         it "locates the requested @contact" do
-          # put :update, id: contact, contact: attributes_for(:invalid_contact)
           expect(assigns(:contact)).to eq(contact)
         end
 
         it "does not change @contact's attributes" do
-          # contact.reload
-          # expect(contact.firstname).to_not eq("Larry")
-          # expect(contact.lastname).to eq("Smith")
           expect(assigns[:contact]).to_not be_valid
         end
 
         it "re-renders the edit method" do
-          # contact.stub(:update_attributes).and_return(false)
-          # put :update, id: contact, contact: attributes_for(:invalid_contact)
           expect(response).to render_template :edit
         end
       end
@@ -206,9 +159,6 @@ describe ContactsController do
       end
 
       it "deletes the contact" do
-        # expect{
-        #   delete :destroy, id: contact
-        # }.to change(Contact,:count).by(-1)
         expect(Contact.exists?(contact)).to be_false
       end
 
@@ -220,7 +170,6 @@ describe ContactsController do
 
   describe "admin access" do
     before :each do
-      # set_user_session(build_stubbed(:admin))
       controller.stub!(:current_user).and_return(admin)
     end
 
@@ -231,7 +180,6 @@ describe ContactsController do
 
   describe "user access" do
     before :each do
-      # set_user_session(build_stubbed(:user))
       controller.stub!(:current_user).and_return(user)
     end
 
