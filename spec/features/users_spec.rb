@@ -14,7 +14,7 @@ describe 'User management' do
       find('#password_confirmation').fill_in 'Password confirmation', with: 'secret123'
       click_button 'Create User'
     }.to change(User, :count).by(1)
-    current_path.should == users_path
+    expect(current_path).to eq users_path
     expect(page).to have_content 'New user created'
     within 'h1' do
       expect(page).to have_content 'Users'

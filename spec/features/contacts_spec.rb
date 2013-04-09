@@ -61,6 +61,11 @@ feature "Manage contacts" do
   scenario "edits a contact and displays the updated results", js: true do
     contact = create(:contact, firstname: 'Sam', lastname: 'Smith')
     visit root_path
+
+    within "#contact_#{contact.id}" do
+      expect(page).to_not have_content 'Edit'
+    end
+
     click_link 'Toggle Admin'
     within "#contact_#{contact.id}" do
       click_link 'Edit'
