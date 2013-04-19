@@ -11,8 +11,6 @@ Each chapter's progress has a specific branch in this repository:
 - `08_features`: Use of Capybara in RSpec feature specs.
 - `09_speedup`: Techniques of running specs more quickly.
 
-Using Git, you can check out each version by name; for example:
-
-    git checkout 03_models
+Using Git, you can check out each version by name. See details in the book.
 
 If you're not comfortable with Git, you can also use GitHub's handy branch/tag filter to select a specific tag and browse the source code online. To learn more about Git, I recommend [Git Immersion](http://gitimmersion.com/).
