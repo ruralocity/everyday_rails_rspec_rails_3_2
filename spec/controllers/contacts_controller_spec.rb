@@ -186,7 +186,7 @@ describe ContactsController do
     describe 'GET #new' do
       it "requires login" do
         get :new
-        response.should require_login
+        expect(response).to require_login
       end
     end
 
