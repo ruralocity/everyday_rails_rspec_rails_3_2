@@ -18,7 +18,7 @@ describe Contact do
   end
 
   it "is invalid without an email address" do
-    expect(Contact.new(email: nil)).to have(1).errors_on(:lastname)
+    expect(Contact.new(email: nil)).to have(1).errors_on(:email)
   end
 
   it "is invalid with a duplicate email address" do
