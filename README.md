@@ -1,3 +1,5 @@
+**Looking for the Rails 4.0 version?** Please see <https://github.com/everydayrails/rspec_rails_4>.
+
 Sample Rails 3.2.x application for [Everyday Rails Testing with RSpec: A Practical Approach to Test-driven Development](https://leanpub.com/everydayrailsrspec) by Aaron Sumner. This repository demonstrates incremental testing of an existing application, starting with an untested codebase and working through model, controller, and feature specs.
 
 Each chapter's progress has a specific branch in this repository:
@@ -11,6 +13,8 @@ Each chapter's progress has a specific branch in this repository:
 - `08_features`: Use of Capybara in RSpec feature specs.
 - `09_speedup`: Techniques of running specs more quickly.
 
-Using Git, you can check out each version by name. See details in the book.
+Using Git, you can check out each version by name; for example:
+
+    git checkout 03_models
 
 If you're not comfortable with Git, you can also use GitHub's handy branch/tag filter to select a specific tag and browse the source code online. To learn more about Git, I recommend [Git Immersion](http://gitimmersion.com/).
